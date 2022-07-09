@@ -6,29 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<header>
+<body>
+  <header>
 <!-- link timer countdown -->
-    <div>Time: 0</div>
+    <div id="timer">Time: 0</div>
 <!-- veiw highscores - link to stored highscores -->
-    <div>See Highscores</div>
-</header>
+    <nav id="scores"><a href=""></a>Highscores</nav>
+  </header>
+
+  <main>
 <!-- title
 quiz instructions  -->
-<h1>Coding Knowledge Quiz</h1>
-<p>Try to answer all the following coding questions correctly before time runs out!
-    Each incorrect answer will come with a 10 second time penalty.</p>
+    <h1>Coding Knowledge Quiz</h1>
+      <section id="instructions">
+        <p>Try to answer all the following coding questions correctly before time runs out!</p>
+        <p>Each incorrect answer will come with a 10 second time penalty.</p>
+      </section>
 
 <!-- start button -->
-<button>Start Quiz Now!</button>
+    <button>Start Quiz Now!</button>
 <!-- end game message -->
 
 <!-- enter name for leaderboard -->
 
 <!-- link js -->
-<body>
+  </main>
     
 </body>
 </html>
