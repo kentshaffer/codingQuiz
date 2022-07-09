@@ -15,7 +15,7 @@ header {
     background-color: #bc8fbc;
 }
 
-#timer, #scores{
+#timer, #leaderboard{
     padding: 10px;
     color: #222222;
     font-weight: bolder;
@@ -43,7 +43,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-button {
+#startQuiz {
     display: inline-block;
     justify-content: center;
     margin: 5px;
@@ -52,7 +52,6 @@ button {
     border-radius: 12px;
     padding: 10px 20px;
     color: black;
-    border: 0;
     cursor: pointer;
 }
 
