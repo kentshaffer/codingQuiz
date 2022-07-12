@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Press Start 2P', serif;
     color: #8fbc8f;
     margin: 0;
     min-height: 100vh;
@@ -53,6 +53,7 @@ h1 {
     padding: 10px 20px;
     color: black;
     cursor: pointer;
+    font-family: 'Press Start 2P', serif;
 }
 
 #startQuiz:hover, #post:hover, #quizPage:hover, #reset:hover {
