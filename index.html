@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
 
     <link rel="stylesheet" href="./assets/css/style.css">
-</head>
+  </head>
 
-<body>
-  <header>
-<!-- link timer countdown -->
-    <div id="timer">Time: 0</div>
-<!-- veiw highscores - link to stored highscores -->
-    <nav id="leaderboard"><a href="leaderboard.html">Veiw Leaderboard</a></nav>
-  </header>
+  <body>
+    <header>
+      <div id="timer">Time: <span id="seconds">0</span></div>
 
-  <main>
+      <nav id="leaderboard"><a href="leaderboard.html">Veiw Leaderboard</a></nav>
+    </header>
 
-    <h1>Coding Knowledge Quiz</h1>
-      <section id="instructions">
+    <main id="homePage">
+
+      <h1>Coding Knowledge Quiz</h1>
+      <section id="rules">
         <p>Try to answer all the following coding questions correctly before time runs out!</p>
-        <p>Each incorrect answer will come with a 10 second time penalty.</p>
+        <p>Each incorrect answer will incur with a 10 second time penalty.</p>
       </section>
 
-<!-- start button -->
-    <button id="startQuiz">Start Quiz Now!</button>
-<!-- end game message -->
+      <button id="startQuiz">Start Quiz Now!</button>
 
-<!-- enter name for leaderboard -->
+      <section id="quizQuestion" class="hidden">
+        <h2 id="question"></h2>
+        <div id="answers" class="answers"></div>
+      </section>
 
-<!-- link js -->
-  </main>
+      <section id="done" class="hidden">
+        <h2>Finished!</h2>
+        <p>You Scored <span id="scores"></span>points.</p>
+        <p>Claim Your Score: <input type="text" id="name" max="5" /><button id="post">Post!</button></p>
+      </section>
+
+      <div id="results" class="results hidden"></div>
+
+    </main>
+
     
-</body>
+  </body>
 </html>

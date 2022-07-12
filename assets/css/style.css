@@ -33,7 +33,7 @@ h1 {
     margin: 70px;
 }
 
-#instructions {
+#rules {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,7 +43,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-#startQuiz {
+#startQuiz, #post, #quizPage, #reset {
     display: inline-block;
     justify-content: center;
     margin: 5px;
@@ -55,6 +55,6 @@ h1 {
     cursor: pointer;
 }
 
-button:hover {
+#startQuiz:hover, #post:hover, #quizPage:hover, #reset:hover {
     background-color: #8fbc8f;
 }
