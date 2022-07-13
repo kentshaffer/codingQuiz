@@ -68,7 +68,7 @@ let question = document.getElementById('question');
 
 question.textContent = newQuestion.title;
 
-answers.innerHTML = '';
+answerOptions.innerHTML = '';
 
 newQuestion.possibleAnswers.forEach(function(answers, i) {
     let questionGroup = document.createElement('button');
