@@ -34,7 +34,7 @@ let correctSound = new Audio('assets/sfx/correct.wav');
 let incorrectSound = new Audio('assets/sfx/incorrect.wav');
 
 let selectedQuestion = 0;
-let timer = questions.length * 15;
+let timer = quizContent.length * 15;
 let seconds;
 
 let quizQuestions = documet.getElementById('quizQuestions');
@@ -45,11 +45,89 @@ let startQuiz = documet.getElementById('startQuiz');
 let playerNname = documet.getElementById('name');
 let quizResults = documet.getElementById('results');
 
-//function for starting app
+function takeQuizNow() {
 
-//function for question selection
+    let takeQuiz = document.getElementById('rules');
 
-//function to listen for question selection click
+    takeQuiz.setAttribute('class', 'hidden');
+
+    quizQuestions.removeAttribute('class');
+
+    seconds = setInterval(clockTick, 1000);
+
+    timeLeft.textContent = timer;
+
+    importQuizContent();
+}
+
+function importQuizContent() {
+
+let newQuestion = quizContent[selectedQuestion];
+
+let question = document.getElementById('question');
+
+question.textContent = newQuestion.title;
+
+answers.innerHTML = '';
+
+newQuestion.answers.forEach(function(answers, i) {
+    let questionGroup = document.createElement('button');
+
+    questionGroup.setAttribute('class', 'answers');
+
+    questionGroup.setAttribute('value', answers);
+
+    questionGroup.textContent = i + 1 + '. ' + answers;
+
+    questionGroup.onclick = questionSelection;
+
+    answers.appendChild(questionGroup);
+  });
+}
+
+function questionSelection() {
+
+    if (this.value !== quizContent[selectedQuestion].correctAnswer) {
+
+      timer -= 10;
+
+      if (timer < 0) {
+          timer = 0;
+      }
+
+      timeLeft.textContent = timer;
+
+      incorrectSound.play();
+
+      quizResults.textContent = 'Not Quite!'
+
+    } else {
+
+      correctSound.play();
+
+      quizResults.textContent = 'Nice Job!'
+    }
+
+    quizResults.setAttribute('class', 'results');
+
+    setTimeout(function() {
+
+      quizResults.setAttribute('class', 'results hidden');
+
+    }, 1000);
+
+    selectedQuestion++;
+
+    if (selectedQuestion === quizContent.length) {
+        
+      finish();
+    
+    } else {
+
+       importQuizContent();
+        
+    }
+}
 
 //function to end quiz when all questions have been asked
 
