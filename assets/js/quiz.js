@@ -34,16 +34,16 @@ let correctSound = new Audio('assets/sfx/correct.wav');
 let incorrectSound = new Audio('assets/sfx/incorrect.wav');
 
 let selectedQuestion = 0;
-let timer = quizContent.length * 15;
+let timer = quizContent.length * 10;
 let seconds;
 
-let quizQuestions = documet.getElementById('quizQuestions');
-let timeLeft = documet.getElementById('timeLeft');
-let answers = documet.getElementById('answers');
-let postScore = documet.getElementById('post');
-let startQuiz = documet.getElementById('startQuiz');
-let playerNname = documet.getElementById('name');
-let quizResults = documet.getElementById('results');
+let quizQuestions = document.getElementById('quizQuestions');
+let timeLeft = document.getElementById('timeLeft');
+let answerOptions = document.getElementById('answers');
+let postScore = document.getElementById('post');
+let startQuiz = document.getElementById('startQuiz');
+let playerName = document.getElementById('name');
+let quizResults = document.getElementById('results');
 
 function takeQuizNow() {
 
@@ -53,7 +53,7 @@ function takeQuizNow() {
 
     quizQuestions.removeAttribute('class');
 
-    seconds = setInterval(clockTick, 1000);
+    seconds = setInterval(timeClock, 1000);
 
     timeLeft.textContent = timer;
 
@@ -70,7 +70,7 @@ question.textContent = newQuestion.title;
 
 answers.innerHTML = '';
 
-newQuestion.answers.forEach(function(answers, i) {
+newQuestion.possibleAnswers.forEach(function(answers, i) {
     let questionGroup = document.createElement('button');
 
     questionGroup.setAttribute('class', 'answers');
@@ -81,7 +81,7 @@ newQuestion.answers.forEach(function(answers, i) {
 
     questionGroup.onclick = questionSelection;
 
-    answers.appendChild(questionGroup);
+    answerOptions.appendChild(questionGroup);
   });
 }
 
@@ -125,13 +125,67 @@ function questionSelection() {
     } else {
 
        importQuizContent();
-        
+
     }
 }
 
-//function to end quiz when all questions have been asked
+function finish() {
 
-//function for time clock to end quiz if 0 
+  clearInterval(seconds);
 
-//fuction to record to leaderboard
+  let finishQuiz = document.getElementById('done');
 
+  finishQuiz.removeAttribute('class');
+
+  let points = document.getElementById('scores');
+
+  points.textContent = timer;
+
+  quizQuestions.setAttribute('class', 'hidden');
+}
+
+function timeClock() {
+
+  timer--;
+
+  timeLeft.textContent = timer;
+
+  if (timer <= 0) {
+
+    finish();
+  }
+}
+
+function postToLeaderboard () {
+
+  let name = playerName.value.trim();
+
+  if (name !== '') {
+    
+    let leaderboard = JSON.parse(window.localStorage.getItem('leaderboard')) || [];
+
+    let addResult = {
+
+    score: timer,
+
+    name: name
+    };
+
+    leaderboard.push(addResult);
+    window.localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+
+    window.location.href = 'leaderboard.html';
+  }
+}
+
+function enter(event) {
+  if (event.key === 'Enter') {
+      postToLeaderboard();
+  }
+}
+
+postScore.onclick = postToLeaderboard;
+
+startQuiz.onclick = takeQuizNow;
+
+playerName.onkeyup = enter;
